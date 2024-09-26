@@ -8,13 +8,14 @@ Welcome to Vidjoy! This latest version introduces a partnership program, allowin
 To host your own Vidjoy instance, follow these steps:
 
 1. Clone the repository.
-2. ```markdown
+ ```markdown
    git clone https://github.com/luslucifer/vidjoy-docker.git
    ```
-3. change directory ```markdown
+2. change directory
+  ```markdown
    cd vidjoy-docker```
    
-4. Run the startup script:
+5. Run the startup script:
 ```markdown
    ./start.sh
    ```
