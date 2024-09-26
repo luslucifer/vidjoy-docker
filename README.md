@@ -1,4 +1,5 @@
 
+```markdown
 # Vidjoy
 
 Welcome to Vidjoy! This latest version introduces a partnership program, allowing users to become partners and run their own Vidjoy instances.
@@ -7,16 +8,18 @@ Welcome to Vidjoy! This latest version introduces a partnership program, allowin
 
 To host your own Vidjoy instance, follow these steps:
 
-1. Clone the repository.
- ```markdown
+1. Clone the repository:
+   ```bash
    git clone https://github.com/luslucifer/vidjoy-docker.git
    ```
-2. change directory
-  ```markdown
-   cd vidjoy-docker```
+
+2. Change directory:
+   ```bash
+   cd vidjoy-docker
+   ```
    
-5. Run the startup script:
-```markdown
+3. Run the startup script:
+   ```bash
    ./start.sh
    ```
 
@@ -41,4 +44,3 @@ Soon, we will be introducing advertisements, allowing all contributors and share
 By becoming a partner, you help maintain a robust and scalable environment for all Vidjoy users!
 ```
 
-Feel free to modify it further if needed! Let me know if you need anything else.
