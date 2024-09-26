@@ -1,4 +1,3 @@
-Here's the complete `README.md` file for your Vidjoy project:
 
 ```markdown
 # Vidjoy
