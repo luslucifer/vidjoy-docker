@@ -1,5 +1,4 @@
 
-```markdown
 # Vidjoy
 
 Welcome to Vidjoy! This latest version introduces a partnership program, allowing users to become partners and run their own Vidjoy instances.
@@ -12,7 +11,6 @@ To host your own Vidjoy instance, follow these steps:
    ```bash
    git clone https://github.com/luslucifer/vidjoy-docker.git
    ```
-
 2. Change directory:
    ```bash
    cd vidjoy-docker
