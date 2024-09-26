@@ -1,5 +1,4 @@
 
-```markdown
 # Vidjoy
 
 Welcome to Vidjoy! This latest version introduces a partnership program, allowing users to become partners and run their own Vidjoy instances.
@@ -10,6 +9,7 @@ To host your own Vidjoy instance, follow these steps:
 
 1. Clone the repository.
 2. Run the startup script:
+```markdown
 
    ```bash
    ./start.sh
