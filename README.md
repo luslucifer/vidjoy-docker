@@ -9,9 +9,12 @@ To host your own Vidjoy instance, follow these steps:
 
 1. Clone the repository.
 2. ```markdown
-   git clone https://github.com/luslucifer/vidjoy-docker
+   git clone https://github.com/luslucifer/vidjoy-docker.git
    ```
-5. Run the startup script:
+3. change directory ```markdown
+   cd vidjoy-docker```
+   
+4. Run the startup script:
 ```markdown
    ./start.sh
    ```
