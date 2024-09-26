@@ -11,7 +11,7 @@ To host your own Vidjoy instance, follow these steps:
 2. Run the startup script:
 ```markdown
 
-   ```bash
+   ```
    ./start.sh
    ```
 
