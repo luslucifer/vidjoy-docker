@@ -40,5 +40,4 @@ Vidjoy now allows users to become partners. When you host a Vidjoy instance, it 
 Soon, we will be introducing advertisements, allowing all contributors and shareholders to earn based on the number of requests their servers receive. This will create an additional revenue stream for those involved in the Vidjoy ecosystem.
 
 By becoming a partner, you help maintain a robust and scalable environment for all Vidjoy users!
-```
 
