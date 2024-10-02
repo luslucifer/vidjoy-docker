@@ -1,0 +1,79 @@
+version: '3.8'
+
+services:
+  nginx:
+    image: luslucifer490587/vidjoy-nginx:latest
+    restart: unless-stopped
+    ports:
+      - '80:80'
+      - '443:443'
+    networks:
+      - vidjoy
+
+  proxy-server:
+    image: luslucifer490587/vidjoy-proxy-server:latest
+    expose:
+      - 80
+    networks:
+      - vidjoy
+    restart: unless-stopped
+    environment:
+      - HOST=0.0.0.0
+      - PORT=80
+    command: "npm run start"  # Production command
+
+  server:
+    image: luslucifer490587/vidjoy-server:latest
+    expose:
+      - 80
+    networks:
+      - vidjoy
+    restart: unless-stopped
+    environment:
+      - HOST=0.0.0.0
+      - PORT=80
+    command: "npm run start"  # Production command
+
+  player:
+    image: luslucifer490587/vidjoy-player:latest
+    restart: unless-stopped
+    expose:
+      - 5173
+    networks:
+      - vidjoy
+    ports:
+      - 5170:5173
+    command: "npm run start"  # Production command
+
+  sub:
+    image: luslucifer490587/vidjoy-sub:latest
+    restart: always
+    networks:
+      - vidjoy
+    environment:
+      - PORT=80
+      - TMDB_KEY=${TMDB_KEY}
+    command: "npm run start"  # Production command
+
+  thumb:
+    image: luslucifer490587/vidjoy-thumb:latest
+    restart: always
+    networks:
+      - vidjoy
+    environment:
+      - PORT=80
+      - TMDB_KEY=${TMDB_KEY}
+
+    command: "npm run start"  # Production command
+
+  redis:
+    image: redis/redis-stack:latest
+    expose:
+      - 8001
+      - 6379
+    networks:
+      - vidjoy
+
+networks:
+  vidjoy:
+    driver: bridge
