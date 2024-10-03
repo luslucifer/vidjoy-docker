@@ -75,13 +75,3 @@ if [ $? -eq 0 ]; then
 fi
 
 # Make a request to the Cloudflare Worker URL with the server's IP if conditions are met
-echo "Making a request to the Cloudflare Worker URL..."
-API_URL="https://dns.vidsrcproxy.workers.dev/$SERVER_IP"
-RESPONSE=$(curl -s "$API_URL")
-
-# Check if the request was successful
-if [ -z "$RESPONSE" ]; then
-    echo "Failed to get a response from $API_URL"
-else
-    echo "Response from the API: $RESPONSE"
-fi
