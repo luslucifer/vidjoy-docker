@@ -5,8 +5,11 @@ services:
     image: luslucifer490587/vidjoy-nginx:latest
     restart: unless-stopped
     ports:
-      - '80:80'
-      - '443:443'
+      - '80:80'       # HTTP
+      - '443:443'     # HTTPS
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro  # Custom Nginx config
+      - ./nginx/ssl:/etc/ssl  # SSL certificates (Let's Encrypt or self-signed)
     networks:
       - vidjoy
 
@@ -20,7 +23,8 @@ services:
     environment:
       - HOST=0.0.0.0
       - PORT=80
-    command: "npm run start"  # Production command
+      - PROTOCOL=https  # HTTPS protocol
+    command: "npm run start"
 
   server:
     image: luslucifer490587/vidjoy-server:latest
@@ -32,7 +36,8 @@ services:
     environment:
       - HOST=0.0.0.0
       - PORT=80
-    command: "npm run start"  # Production command
+      - PROTOCOL=https  # HTTPS protocol
+    command: "npm run start"
 
   player:
     image: luslucifer490587/vidjoy-player:latest
@@ -43,7 +48,7 @@ services:
       - vidjoy
     ports:
       - 5170:5173
-    command: "npm run start"  # Production command
+    # command: "npm run start"
 
   sub:
     image: luslucifer490587/vidjoy-sub:latest
@@ -53,7 +58,8 @@ services:
     environment:
       - PORT=80
       - TMDB_KEY=${TMDB_KEY}
-    command: "npm run start"  # Production command
+      - PROTOCOL=https  # HTTPS protocol
+    command: "npm run start"
 
   thumb:
     image: luslucifer490587/vidjoy-thumb:latest
@@ -63,8 +69,8 @@ services:
     environment:
       - PORT=80
       - TMDB_KEY=${TMDB_KEY}
-
-    command: "npm run start"  # Production command
+      - PROTOCOL=https  # HTTPS protocol
+    command: "npm run start"
 
   redis:
     image: redis/redis-stack:latest
@@ -77,4 +83,3 @@ services:
 networks:
   vidjoy:
     driver: bridge
-#nameless monster 
