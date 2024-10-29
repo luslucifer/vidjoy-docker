@@ -43,7 +43,6 @@ To host your own Vidjoy instance, follow these steps:
    After starting, you should be able to access Vidjoy at `http://localhost` (or `https://localhost` if using SSL) in your browser.
 
 ---
----
 ### Requirements
 
 - A VPS with **4GB of RAM** is required to run Vidjoy smoothly.
