@@ -1,20 +1,13 @@
-version: '3.8'
 
 services:
   nginx:
-    image: 'luslucifer490587/nginx-manager:latest'
-    build: ./nginx
+    image: luslucifer490587/vidjoy-nginx:latest
     restart: unless-stopped
     ports:
       - '80:80'
-      - '81:81'
       - '443:443'
-    # volumes:
-    #   - ./nginx/data:/data
-    #   - ./nginx/letsencrypt:/etc/letsencrypt
     networks:
       - vidjoy
-
 
   proxy-server:
     image: luslucifer490587/vidjoy-proxy-server:latest
@@ -26,7 +19,8 @@ services:
     environment:
       - HOST=0.0.0.0
       - PORT=80
-      - PROTOCOL=https  # HTTPS protocol
+      - PROTOCOL=https
+      - CORSANYWHERE_WHITELIST=https://moviekex.com,https://developer-tools.jwplayer.com,https://yestream.vidsrc.nl
     command: "npm run start"
 
   server:
@@ -39,19 +33,22 @@ services:
     environment:
       - HOST=0.0.0.0
       - PORT=80
-      - PROTOCOL=https  # HTTPS protocol
+      - PROTOCOL=https
     command: "npm run start"
 
-  player:
-    image: luslucifer490587/vidjoy-player:latest
+  frontend:
+    image: luslucifer490587/vidjoy-frontend:latest
     restart: unless-stopped
     expose:
       - 5173
     networks:
       - vidjoy
     ports:
-      - 5170:5173
-    # command: "npm run start"
+      - 5170:3000
+    environment:
+      - PROTOCOL=http
+      - TMDB_KEY=${TMDB_KEY}
+    command: "npm run start"
 
   sub:
     image: luslucifer490587/vidjoy-sub:latest
@@ -61,8 +58,8 @@ services:
     environment:
       - PORT=80
       - TMDB_KEY=${TMDB_KEY}
-      - PROTOCOL=https  # HTTPS protocol
-    command: "npm run start"
+      - PROTOCOL=https
+    command: "bun run start"
 
   thumb:
     image: luslucifer490587/vidjoy-thumb:latest
@@ -72,7 +69,7 @@ services:
     environment:
       - PORT=80
       - TMDB_KEY=${TMDB_KEY}
-      - PROTOCOL=https  # HTTPS protocol
+      - PROTOCOL=https
     command: "npm run start"
 
   redis:
@@ -82,6 +79,19 @@ services:
       - 6379
     networks:
       - vidjoy
+
+  # Watchtower service for auto-updating all containers every 5 minutes
+  watchtower:
+    image: containrrr/watchtower:latest
+    restart: unless-stopped
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - vidjoy
+    environment:
+      - WATCHTOWER_CLEANUP=true        # Automatically remove old images
+      - WATCHTOWER_POLL_INTERVAL=300   # Check every 5 minutes (300 seconds)
+    command: --interval 300 --cleanup  # Interval and cleanup flag
 
 networks:
   vidjoy:
