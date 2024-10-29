@@ -1,4 +1,5 @@
 
+
 # Vidjoy
 
 Welcome to Vidjoy! This latest version introduces a partnership program, allowing users to become partners and run their own Vidjoy instances.
@@ -7,20 +8,25 @@ Welcome to Vidjoy! This latest version introduces a partnership program, allowin
 
 To host your own Vidjoy instance, follow these steps:
 
-1. Clone the repository:
+1. **Install Docker** (if not already installed):  
+   Follow the instructions on the [Docker installation page](https://docs.docker.com/get-docker/) to set up Docker on your system.
+
+2. **Clone the repository**:
    ```bash
    git clone https://github.com/luslucifer/vidjoy-docker.git
    ```
-2. Change directory:
+
+3. **Change directory**:
    ```bash
    cd vidjoy-docker
    ```
-   
-3. Run the startup script:
+
+4. **Run the startup script**:
    ```bash
    ./start.sh
    ```
 
+---
 ### Requirements
 
 - A VPS with **4GB of RAM** is required to run Vidjoy smoothly.
