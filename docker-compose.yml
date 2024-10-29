@@ -80,6 +80,23 @@ services:
     networks:
       - vidjoy
 
+  vidjoy-webapp:
+    image: luslucifer490587/vidjoy-webapp
+    environment:
+      - DATABASE_URL=<YOUR PRISMA ACCELERATE URL THAT USES POSTGRES DB URL>
+      - DIRECT_URL=<YOUR POSTGRES DB DIRECT URL>
+      - KINDE_POST_LOGIN_REDIRECT_URL=<WHERE YOU WANT TO REDIRECT USER AFTER LOGIN> // e.g. http://localhost:3000/dashboard
+      - KINDE_POST_LOGOUT_REDIRECT_URL=<WHERE YOU WANT TO REDIRECT USER AFTER LOGOUT> // e.g. http://localhost:3000
+      - KINDE_SITE_URL=<WEBSITE URL> // e.g. http://localhost:3000
+      - NEXT_PUBLIC_BASE_URL=<WEBSITE URL> // e.g. http://localhost:3000
+      - TMDB_API=${TMDB_KEY}
+      - TMDB_BASE="https://api.themoviedb.org/3"
+      - KINDE_CLIENT_ID=<YOUR KINDE CLIENT ID>
+      - KINDE_CLIENT_SECRET=<YOUR KINDE CLIENT SECRET>
+      - NEXT_PUBLIC_AD_SCRIPT=<YOUR AD SCRIPT TO DISPLAY ADS>
+      - KINDE_ISSUER_URL=<YOUR KINDE ISSUER URL>
+
+
   # Watchtower service for auto-updating all containers every 5 minutes
   watchtower:
     image: containrrr/watchtower:latest
