@@ -21,11 +21,28 @@ To host your own Vidjoy instance, follow these steps:
    cd vidjoy-docker
    ```
 
-4. **Run the startup script**:
-   ```bash
-   ./start.sh
+4. **Create a `.env` file**:
+   In the `vidjoy-docker` directory, create a `.env` file to configure your environment variables. Here’s an example:
+
+   ```plaintext
+   TMDB_KEY=your_tmdb_api_key_here  # Replace with your actual TMDB API key
+   PROTOCOL=http                    # Use 'http' for local development, 'https' if you have SSL configured
    ```
 
+   - Replace `your_tmdb_api_key_here` with your actual TMDB API key.
+   - Set `PROTOCOL` to `http` if running locally or `https` if you have SSL configured.
+
+5. **Start the project with Docker Compose**:
+   Run the following command to start the containers in detached mode:
+
+   ```bash
+   docker compose up -d
+   ```
+
+6. **Access Vidjoy**:
+   After starting, you should be able to access Vidjoy at `http://localhost` (or `https://localhost` if using SSL) in your browser.
+
+---
 ---
 ### Requirements
 
