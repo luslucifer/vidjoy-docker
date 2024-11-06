@@ -1,3 +1,4 @@
+version: "3.8"
 
 services:
   nginx:
@@ -16,11 +17,8 @@ services:
     networks:
       - vidjoy
     restart: unless-stopped
-    environment:
-      - HOST=0.0.0.0
-      - PORT=80
-      - PROTOCOL=https
-      - CORSANYWHERE_WHITELIST=https://moviekex.com,https://developer-tools.jwplayer.com,https://yestream.vidsrc.nl
+    env_file:
+      - .env  # Loads environment variables from the .env file
     command: "npm run start"
 
   server:
@@ -30,10 +28,8 @@ services:
     networks:
       - vidjoy
     restart: unless-stopped
-    environment:
-      - HOST=0.0.0.0
-      - PORT=80
-      - PROTOCOL=https
+    env_file:
+      - .env  # Loads environment variables from the .env file
     command: "npm run start"
 
   frontend:
@@ -45,9 +41,8 @@ services:
       - vidjoy
     ports:
       - 5170:3000
-    environment:
-      - PROTOCOL=http
-      - TMDB_KEY=${TMDB_KEY}
+    env_file:
+      - .env  # Loads environment variables from the .env file
     command: "npm run start"
 
   sub:
@@ -55,10 +50,8 @@ services:
     restart: always
     networks:
       - vidjoy
-    environment:
-      - PORT=80
-      - TMDB_KEY=${TMDB_KEY}
-      - PROTOCOL=https
+    env_file:
+      - .env  # Loads environment variables from the .env file
     command: "bun run start"
 
   thumb:
@@ -66,10 +59,8 @@ services:
     restart: always
     networks:
       - vidjoy
-    environment:
-      - PORT=80
-      - TMDB_KEY=${TMDB_KEY}
-      - PROTOCOL=https
+    env_file:
+      - .env  # Loads environment variables from the .env file
     command: "npm run start"
 
   redis:
@@ -82,22 +73,26 @@ services:
 
   vidjoy-webapp:
     image: luslucifer490587/vidjoy-webapp
-    environment:
-      - DATABASE_URL=<YOUR PRISMA ACCELERATE URL THAT USES POSTGRES DB URL>
-      - DIRECT_URL=<YOUR POSTGRES DB DIRECT URL>
-      - KINDE_POST_LOGIN_REDIRECT_URL=<WHERE YOU WANT TO REDIRECT USER AFTER LOGIN> // e.g. http://localhost:3000/dashboard
-      - KINDE_POST_LOGOUT_REDIRECT_URL=<WHERE YOU WANT TO REDIRECT USER AFTER LOGOUT> // e.g. http://localhost:3000
-      - KINDE_SITE_URL=<WEBSITE URL> // e.g. http://localhost:3000
-      - NEXT_PUBLIC_BASE_URL=<WEBSITE URL> // e.g. http://localhost:3000
-      - TMDB_API=${TMDB_KEY}
-      - TMDB_BASE="https://api.themoviedb.org/3"
-      - KINDE_CLIENT_ID=<YOUR KINDE CLIENT ID>
-      - KINDE_CLIENT_SECRET=<YOUR KINDE CLIENT SECRET>
-      - NEXT_PUBLIC_AD_SCRIPT=<YOUR AD SCRIPT TO DISPLAY ADS>
-      - KINDE_ISSUER_URL=<YOUR KINDE ISSUER URL>
+    ports:
+      - 3002:3000
+    env_file:
+      - .env  # Loads environment variables from the .env file
+    networks:
+      - vidjoy
+    command: "npm run start"
 
+  portainer:
+    image: portainer/portainer-ce:2.21.4
+    container_name: portainer
+    restart: always
+    ports:
+      - "8000:8000"
+      - "9443:9443"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - vidjoy
 
-  # Watchtower service for auto-updating all containers every 5 minutes
   watchtower:
     image: containrrr/watchtower:latest
     restart: unless-stopped
@@ -106,9 +101,9 @@ services:
     networks:
       - vidjoy
     environment:
-      - WATCHTOWER_CLEANUP=true        # Automatically remove old images
-      - WATCHTOWER_POLL_INTERVAL=300   # Check every 5 minutes (300 seconds)
-    command: --interval 300 --cleanup  # Interval and cleanup flag
+      - WATCHTOWER_CLEANUP=true
+      - WATCHTOWER_POLL_INTERVAL=300
+    command: --interval 300 --cleanup
 
 networks:
   vidjoy:
