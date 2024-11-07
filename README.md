@@ -171,4 +171,3 @@ For ongoing management, here are some helpful Docker commands:
 ---
 
 Thank you for being a part of Vidjoy! We look forward to building a more connected and efficient streaming platform together.
-```
