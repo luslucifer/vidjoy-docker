@@ -1,5 +1,4 @@
 
-```markdown
 # Vidjoy
 
 Welcome to Vidjoy! This latest version introduces a partnership program, allowing users to become partners and run their own Vidjoy instances.
@@ -132,6 +131,38 @@ To host your own Vidjoy instance, follow these steps:
 
 ---
 
+### Explanation of Environment Variables
+
+The server and site can be built and run successfully without the variables marked as _(Optional)_, but the site appears best when you use all of them
+
+- **`DIRECT_URL`**: The direct URL to connect to your PostgreSQL database. You can get one from [supabase](https://supabase.com).
+
+- **`DATABASE_URL`**: Points to your Prisma Accelerate URL, using a PostgreSQL database. You can generate the URL from [prisma](https://console.prisma.io).
+
+- **`KINDE_POST_LOGIN_REDIRECT_URL`**: _(Optional)_ The URL to which users are redirected after logging in, e.g., `http://localhost:3000/dashboard`.
+
+- **`KINDE_POST_LOGOUT_REDIRECT_URL`**: _(Optional)_ The URL to which users are redirected after logging out, e.g., `http://localhost:3000`.
+
+- **`KINDE_SITE_URL`**: _(Optional)_ The main website URL, typically `http://localhost:3000` for local development or your production URL when deployed.
+
+- **`NEXT_PUBLIC_BASE_URL`**: The base URL of your website, which is used in the frontend. This is usually the same as `KINDE_SITE_URL`.
+
+- **`TMDB_API`**: Your API key from The Movie Database (TMDB), allowing access to movie and TV series data.
+
+- **`TMDB_BASE`**: The base URL for TMDB API requests, set to `https://api.themoviedb.org/3`.
+
+- **`KINDE_CLIENT_ID`**: _(Optional)_ Your Kinde client ID, required for user authentication and authorization.
+
+- **`KINDE_CLIENT_SECRET`**: _(Optional)_ Your Kinde client secret, used in conjunction with the client ID for secure authentication.
+
+- **`NEXT_PUBLIC_AD_SCRIPT`**: _(Optional)_ The script to display ads on your website. This allows ad integrations by inserting the script here.
+
+- **`KINDE_ISSUER_URL`**: _(Optional)_ The issuer URL from Kinde, used for verifying tokens and managing user sessions securely.
+
+If you are confused on how to get the **DIRECT_URL** and **DATABASE_URL** you can go to our [discord](https://discord.gg/4cq9vkerA3) and ask for help or search on [youtube](https://youtube.com).
+
+
+
 ## Partnership Program
 
 Vidjoy now offers a partnership program where users can run their own instances and help grow the Vidjoy ecosystem.
@@ -172,4 +203,3 @@ For ongoing management, here are some helpful Docker commands:
 ---
 
 Thank you for being a part of Vidjoy! We look forward to building a more connected and efficient streaming platform together.
-```
