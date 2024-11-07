@@ -4,6 +4,44 @@
 
 Welcome to Vidjoy! This latest version introduces a partnership program, allowing users to become partners and run their own Vidjoy instances.
 
+
+
+
+
+## What is Vidjoy?
+
+**Vidjoy** is an innovative, scalable media streaming platform designed to allow users to host and manage their own streaming instances. Vidjoy’s infrastructure leverages Docker for easy deployment, making it accessible for users who want a customizable, self-hosted media solution. With the new **Partnership Program**, users can set up independent Vidjoy instances and join a collaborative network to enhance streaming performance, uptime, and accessibility across the globe.
+
+Vidjoy supports a seamless integration with **The Movie Database (TMDB)** API, which provides access to detailed information about movies, TV shows, and multimedia content, giving users a complete and personalized media experience. Each instance is equipped to handle high loads and deliver a responsive interface for optimal viewing experiences.
+
+## Key Features
+
+- **Distributed Hosting**: Run multiple Vidjoy instances to reduce downtime and improve streaming speeds.
+- **Partnership Program**: Join other partners in a shared ecosystem, where each server’s uptime and response times contribute to overall network performance.
+- **TMDB Integration**: Easily integrate with TMDB for content metadata, making it simple to manage and present movies, shows, and other media.
+- **Self-hosted Media Solution**: Vidjoy offers a fully customizable media streaming platform that you control, providing privacy and flexibility.
+- **Future Monetization**: Vidjoy plans to introduce advertisements, offering partners a chance to generate revenue based on the server’s request load.
+
+## How It Works
+
+Vidjoy uses Docker containers to streamline the setup process and isolate each service needed to run a streaming platform, such as the backend, frontend, and database. After setting up Vidjoy with Docker Compose, each instance can be configured using environment variables, allowing for a personalized and secure streaming environment. Partners can connect servers to Vidjoy’s network, contributing to a global media distribution system that balances load and optimizes user experience based on location.
+
+By becoming a Vidjoy partner, users help maintain a resilient and scalable network, ultimately delivering faster, more reliable access to media content for all viewers.
+
+## Who Is Vidjoy For?
+
+Vidjoy is ideal for:
+
+- **Media Enthusiasts**: Users who want a private, self-managed streaming service.
+- **Developers and Tech Enthusiasts**: Individuals interested in hosting their own streaming servers or enhancing the platform with custom integrations.
+- **Small Media Businesses**: Organizations seeking an affordable, scalable alternative to proprietary streaming solutions.
+- **Content Creators and Influencers**: People looking to host exclusive video content for fans, without relying on third-party services.
+
+With Vidjoy, users gain full control over their streaming setup while benefiting from a collaborative and distributed network. This combination of autonomy and scalability makes Vidjoy an exciting solution for the future of media hosting.
+
+
+
+
 ## Getting Started
 
 To host your own Vidjoy instance, follow these steps:
